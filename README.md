@@ -2,7 +2,7 @@
 
 ## Documentation
 
-- [App Documentation](app/readme.md)
-- [Server Documentation](server/readme.md)
-- [Design Documents](design/)
+- [App Documentation](https://github.com/irabbit79/easyticket/tree/main/app)
+- [Server Documentation](https://github.com/irabbit79/easyticket/tree/main/server)
+- [Design Documents](https://github.com/irabbit79/easyticket/tree/main/design)
 - [Requirements Documentation](requirements/)
