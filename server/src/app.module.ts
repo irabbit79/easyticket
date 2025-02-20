@@ -11,7 +11,6 @@ import { UsersModule } from './modules/users/users.module';
     EventsModule,
     ReservationsModule,
     UsersModule,
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'db.sqlite',

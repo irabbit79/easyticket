@@ -20,4 +20,9 @@ export class UsersController {
   async create(@Body('name') name: string): Promise<UserEntity> {
     return this.usersService.create(name);
   }
+
+  @Get('reset-database')
+  async resetDatabase() {
+    await this.usersService.deleteAllUsers();
+  }
 }

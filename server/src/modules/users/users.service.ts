@@ -2,12 +2,15 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { UserEntity } from './entities/user.entity';
+import { EventEntity } from '../events/entities/event.entity';
 
 @Injectable()
 export class UsersService {
   constructor(
     @InjectRepository(UserEntity)
     private readonly userRepository: Repository<UserEntity>,
+    @InjectRepository(EventEntity)
+    private readonly eventRepository: Repository<EventEntity>,
   ) {}
 
   /**
@@ -42,10 +45,34 @@ export class UsersService {
    * @param name user name to be created
    * @returns generated user
    */
-  create(name: string): Promise<UserEntity> {
+  async create(name: string): Promise<UserEntity> {
+    const user = await this.userRepository.findOne({
+      where: { name },
+    });
+    if (user) {
+      return user;
+    }
+    if (name == 'error') {
+      throw new Error('Error creating user');
+    }
     return this.userRepository.save({
       name,
       createdAt: new Date(),
+    });
+  }
+
+  /**
+   * Reset the database
+   */
+  async deleteAllUsers() {
+    await this.userRepository.delete({});
+    await this.eventRepository.delete({});
+    //add one event
+    await this.eventRepository.save({
+      tickets: 100,
+      name: 'Test Event',
+      desc: 'Test Description',
+      date: new Date(),
     });
   }
 }

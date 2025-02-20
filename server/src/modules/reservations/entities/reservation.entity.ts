@@ -23,13 +23,13 @@ export class ReservationEntity {
   user: UserEntity;
 
   //Reserved event
-  @ManyToOne(() => EventEntity)
+  @ManyToOne(() => EventEntity, { onDelete: 'CASCADE' })
   @JoinColumn()
   event: EventEntity;
 
   //Order generated this event.
   //Many reservations can be link to same order in case of transfer,
-  @ManyToOne(() => OrderEntity)
+  @ManyToOne(() => OrderEntity, { onDelete: 'CASCADE' })
   @JoinColumn()
   order: OrderEntity;
 

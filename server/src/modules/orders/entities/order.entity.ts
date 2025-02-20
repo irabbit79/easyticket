@@ -18,7 +18,7 @@ export class OrderEntity {
   id: number;
 
   //Owner of the order, the user who made the purchase
-  @ManyToOne(() => UserEntity)
+  @ManyToOne(() => UserEntity, { onDelete: 'CASCADE' })
   @JoinColumn()
   user: UserEntity;
 

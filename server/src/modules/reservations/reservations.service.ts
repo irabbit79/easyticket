@@ -69,7 +69,7 @@ export class ReservationsService {
    */
   async findByUser(userId: number): Promise<ReservationEntity[]> {
     const reservation = await this.reservationRepository.find({
-      relations: ['user'],
+      relations: ['event'],
       where: {
         user: { id: userId },
       },
