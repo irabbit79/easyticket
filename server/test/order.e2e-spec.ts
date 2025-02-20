@@ -62,13 +62,10 @@ describe('Orders (e2e)', () => {
       });
     });
 
-
     describe('GET /users/:userId/orders', () => {
       it('should get orders for a specific user', async () => {
         // First create an order for the user
-        await request(app.getHttpServer())
-          .post('/orders')
-          .send(testOrder);
+        await request(app.getHttpServer()).post('/orders').send(testOrder);
 
         // Then get orders for that user
         return request(app.getHttpServer())
