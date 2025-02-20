@@ -18,7 +18,7 @@ export class EventController {
 
   @Post('events')
   async create(
-    @Body('eventId') eventId: number,
+    @Body('id') eventId: number,
     @Body('numberOfTickets') numberOfTickets: number,
     @Body('name') name: string,
     @Body('desc') desc: string,
